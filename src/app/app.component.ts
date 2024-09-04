@@ -31,16 +31,12 @@ export class AppComponent implements OnInit{
     return this.loginForm.controls;
   }
 
-  // Método que se ejecuta al enviar el formulario
+
   onSubmit() {
     this.submitted = true;
-
-    // Detener la ejecución si el formulario no es válido
     if (this.loginForm.invalid) {
       return;
     }
-
-    // Lógica para manejar el inicio de sesión
     const { username, password } = this.loginForm.value;
     if (username === 'admin' && password === 'admin') {
       this.message = 'Inicio de sesión exitoso';
