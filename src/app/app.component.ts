@@ -1,47 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'; // Importa ReactiveFormsModule si es necesario
-import { RouterOutlet } from '@angular/router'; // Importa RouterOutlet si es necesario
-import { UsuarioService } from './service/usuario.service';
-import { HttpClientModule } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  standalone: true, 
-  imports: [ReactiveFormsModule, HttpClientModule, RouterOutlet], 
+  standalone: true,
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  imports: [CommonModule, FormsModule] // Importa CommonModule y FormsModule aquí
 })
-export class AppComponent implements OnInit{
-  loginForm: FormGroup;
-  submitted = false;
-  message: string | undefined;
+export class AppComponent {
 
-  constructor(private formBuilder: FormBuilder
-  ) {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: [' ', Validators.required]
-    });
+  constructor(){
+    
   }
-  ngOnInit(): void {
-  }
-
-  // Getter para acceder a los controles del formulario
-  get formControls() {
-    return this.loginForm.controls;
-  }
-
+  username: string = '';
+  password: string = '';
+  errorMessage: string = '';
 
   onSubmit() {
-    this.submitted = true;
-    if (this.loginForm.invalid) {
-      return;
-    }
-    const { username, password } = this.loginForm.value;
-    if (username === 'admin' && password === 'admin') {
-      this.message = 'Inicio de sesión exitoso';
+    if (this.username === '' || this.password === '') {
+      this.errorMessage = 'Por favor, completa todos los campos.';
     } else {
-      this.message = 'Usuario o contraseña incorrectos';
+      this.errorMessage = ''; 
+      console.log('Inicio de sesión exitoso:', this.username);
     }
   }
 }
