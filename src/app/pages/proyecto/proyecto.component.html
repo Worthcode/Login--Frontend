@@ -1,0 +1,60 @@
+<!-- src/app/components/proyecto/proyecto.component.html -->
+<div class="container">
+  <h2>Gestión de Proyectos</h2>
+
+  <div class="form-container">
+    <h3 *ngIf="proyecto.id_proyecto === 0">Crear Proyecto</h3>
+    <h3 *ngIf="proyecto.id_proyecto !== 0">Editar Proyecto</h3>
+
+    <form (ngSubmit)="proyecto.id_proyecto === 0 ? createProyecto() : updateProyecto()">
+      <label for="nombreClave">Nombre Clave</label>
+      <input type="text" [(ngModel)]="proyecto.nombreClave" name="nombreClave" required>
+
+      <label for="denominacionComercial">Denominación Comercial</label>
+      <input type="text" [(ngModel)]="proyecto.denominacionComercial" name="denominacionComercial" required>
+
+      <label for="fechaInicio">Fecha Inicio</label>
+      <input type="date" [(ngModel)]="proyecto.fechaInicio" name="fechaInicio" required>
+
+      <label for="fechaFinalizacion">Fecha Finalización</label>
+      <input type="date" [(ngModel)]="proyecto.fechaFinalizacion" name="fechaFinalizacion" required>
+
+      <label for="estadoActual">Estado Actual</label>
+      <input type="text" [(ngModel)]="proyecto.estadoActual" name="estadoActual" required>
+
+      <label for="porcentajeAvance">Porcentaje Avance</label>
+      <input type="text" [(ngModel)]="proyecto.porcentajeAvance" name="porcentajeAvance" required>
+
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+
+  <h3>Lista de Proyectos</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre Clave</th>
+        <th>Denominación Comercial</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Finalización</th>
+        <th>Estado Actual</th>
+        <th>Avance</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of proyectos">
+        <td>{{ p.nombreClave }}</td>
+        <td>{{ p.denominacionComercial }}</td>
+        <td>{{ p.fechaInicio }}</td>
+        <td>{{ p.fechaFinalizacion }}</td>
+        <td>{{ p.estadoActual }}</td>
+        <td>{{ p.porcentajeAvance }}%</td>
+        <td>
+          <button (click)="editProyecto(p.id_proyecto)">Editar</button>
+          <button (click)="deleteProyecto(p.id_proyecto)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

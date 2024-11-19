@@ -1,0 +1,26 @@
+<div>
+  <h1>Empleados</h1>
+
+  <div>
+    <h2>Agregar Empleado</h2>
+    <form (ngSubmit)="guardarEmpleado()">
+      <input [(ngModel)]="newEmpleado.documento" name="documento" placeholder="Documento" required />
+      <input [(ngModel)]="newEmpleado.nombre" name="nombre" placeholder="Nombre" required />
+      <input [(ngModel)]="newEmpleado.apellido" name="apellido" placeholder="Apellido" required />
+      <input [(ngModel)]="newEmpleado.telefono" name="telefono" placeholder="Teléfono" />
+      <input [(ngModel)]="newEmpleado.correo" name="correo" placeholder="Correo" />
+      <input [(ngModel)]="newEmpleado.fechaContratacion" name="fechaContratacion" placeholder="Fecha Contratación" type="date" />
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+
+  <div>
+    <h2>Lista de Empleados</h2>
+    <ul>
+      <li *ngFor="let empleado of empleados">
+        {{ empleado.nombre }} {{ empleado.apellido }} ({{ empleado.documento }})
+        <button (click)="eliminarEmpleado(empleado.documento)">Eliminar</button>
+      </li>
+    </ul>
+  </div>
+</div>
