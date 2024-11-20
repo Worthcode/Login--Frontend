@@ -1,5 +1,5 @@
 export class Empleado {
-  documento: string;
+  documento: number;
   nombre: string;
   apellido: string;
   telefono: string;
@@ -8,7 +8,7 @@ export class Empleado {
 
   // Constructor que coincide con los parámetros
   constructor(
-    documento: string,
+    documento: number,
     nombre: string,
     apellido: string,
     telefono: string,

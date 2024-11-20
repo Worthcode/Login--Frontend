@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class LogInService {
 
-  private apiUrl = 'http://localhost:8080/api/users'; // Cambia a la URL de tu backend
+  private apiUrl = 'http://localhost:8081/api/users'; // Cambia a la URL de tu backend
 
   constructor(private http: HttpClient) { }
 

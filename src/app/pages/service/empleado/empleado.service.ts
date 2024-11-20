@@ -8,7 +8,7 @@ import { Empleado } from '../../model/empleado';
 })
 export class EmpleadoService {
 
-  private apiUrl = 'http://localhost:8080/empleados';
+  private apiUrl = 'http://localhost:8081/api/empleados';
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +16,7 @@ export class EmpleadoService {
     return this.http.get<Empleado[]>(this.apiUrl);
   }
 
-  obtenerEmpleadoPorDocumento(documento: string): Observable<Empleado> {
+  obtenerEmpleadoPorDocumento(documento: number): Observable<Empleado> {
     return this.http.get<Empleado>(`${this.apiUrl}/${documento}`);
   }
 
@@ -24,7 +24,7 @@ export class EmpleadoService {
     return this.http.post<Empleado>(this.apiUrl, empleado);
   }
 
-  eliminarEmpleado(documento: string): Observable<void> {
+  eliminarEmpleado(documento: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${documento}`);
   }
 }

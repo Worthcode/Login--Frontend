@@ -8,7 +8,7 @@ import { Proyecto } from '../../model/proyecto';
   providedIn: 'root'
 })
 export class ProyectoService {
-  private baseUrl = 'http://localhost:8080/api/proyectos'; // Cambia según tu URL base de API
+  private baseUrl = 'http://localhost:8081/api/proyectos'; // Cambia según tu URL base de API
 
   constructor(private http: HttpClient) {}
 

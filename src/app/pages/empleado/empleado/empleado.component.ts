@@ -9,7 +9,7 @@ import { EmpleadoService } from '../../service/empleado/empleado.service';
 })
 export class EmpleadoComponent implements OnInit {
   empleados: Empleado[] = [];
-  newEmpleado: Empleado = new Empleado('', '', '', '', '', new Date());
+  newEmpleado: Empleado = new Empleado(0, '', '', '', '', new Date());
 
   constructor(private empleadoService: EmpleadoService) { }
 
@@ -26,11 +26,11 @@ export class EmpleadoComponent implements OnInit {
   guardarEmpleado(): void {
     this.empleadoService.guardarEmpleado(this.newEmpleado).subscribe(data => {
       this.cargarEmpleados();
-      this.newEmpleado = new Empleado('', '', '', '', '', new Date()); // Limpiar formulario
+      this.newEmpleado = new Empleado(0, '', '', '', '', new Date());
     });
   }
 
-  eliminarEmpleado(documento: string): void {
+  eliminarEmpleado(documento: number): void {
     this.empleadoService.eliminarEmpleado(documento).subscribe(() => {
       this.cargarEmpleados();
     });
