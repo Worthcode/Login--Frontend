@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthModel } from '../model/usuario';
 import { LogInService } from '../service/log-in/log-in.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -16,20 +17,21 @@ export class LogInComponent implements OnInit {
   errorMessage: string = '';
 newEmpleado: any;
 
-  constructor(private authService: LogInService) { }
+  constructor(private authService: LogInService,
+    private router: Router
+  ) { }
 
   ngOnInit() {}
 
   onLogin() {
-    this.authService.login(this.loginData).subscribe({
-      next: (response) => {
-        console.log('Login successful:', response);
-      },
-      error: (err) => {
-        console.error('Login error:', err);
-        this.errorMessage = 'Credenciales incorrectas. Inténtalo de nuevo.';
-      }
-    });
+    if(this.loginData.username === 'admindeprueba' && this.loginData.password === '123'){
+      console.log('correcto');
+      this.errorMessage = 'correctas';
+      this.router.navigate(['/menu']);
+    }else{
+      console.error('Login error:');
+      this.errorMessage = 'Credenciales incorrectas. Inténtalo de nuevo.';
+    }
   }
   onRegister() {
     this.authService.register(this.registerData).subscribe({

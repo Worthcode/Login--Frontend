@@ -51,6 +51,7 @@ export class ProyectoComponent implements OnInit {
   editProyecto(id: number): void {
     this.proyectoService.getProyectoById(id).subscribe((data) => {
       this.proyecto = data;
+      this.proyecto = { id_proyecto: 0, nombreClave: '', denominacionComercial: '', fechaInicio: '', fechaFinalizacion: '', estadoActual: '', porcentajeAvance: '' };
     });
   }
 

@@ -7,14 +7,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { ProyectoComponent } from './pages/proyecto/proyecto.component';
-import { EmpleadoComponent } from './pages/empleado/empleado/empleado.component';
+import { EmpleadoComponent } from './pages/empleado/empleado.component';
+import { MenuComponent } from './pages/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     ProyectoComponent,
-    EmpleadoComponent
+    EmpleadoComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Empleado } from '../../model/empleado';
-import { EmpleadoService } from '../../service/empleado/empleado.service';
+import { Empleado } from '../model/empleado';
+import { EmpleadoService } from '../service/empleado/empleado.service';
 
 @Component({
   selector: 'app-empleado',
@@ -19,11 +19,13 @@ export class EmpleadoComponent implements OnInit {
 
   cargarEmpleados(): void {
     this.empleadoService.obtenerEmpleados().subscribe(data => {
+
       this.empleados = data;
     });
   }
 
   guardarEmpleado(): void {
+    console.log(this.newEmpleado);
     this.empleadoService.guardarEmpleado(this.newEmpleado).subscribe(data => {
       this.cargarEmpleados();
       this.newEmpleado = new Empleado(0, '', '', '', '', new Date());

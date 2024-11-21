@@ -6,7 +6,6 @@ export class Empleado {
   correo: string;
   fechaContratacion: Date;
 
-  // Constructor que coincide con los parámetros
   constructor(
     documento: number,
     nombre: string,

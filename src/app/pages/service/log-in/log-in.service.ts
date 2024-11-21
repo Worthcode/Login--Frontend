@@ -13,7 +13,7 @@ export class LogInService {
   constructor(private http: HttpClient) { }
 
   login(authData: AuthModel): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login/validar`, authData);
+    return this.http.post(`${this.apiUrl}/login`, authData);
   }
 
   register(authData: AuthModel): Observable<any> {
